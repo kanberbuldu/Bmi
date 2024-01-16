@@ -64,24 +64,12 @@ def calculate():
     except ValueError :
             result_label.config(text="Enter Valid Number!", font=FONT)
 
-
-
-
 calc_button = Button(text="Calculate",font=FONT)
 calc_button.config(command=clear_label)
-
-
 calc_button.config(command=calculate)
-
 calc_button.config(height=1,width=10)
 
-
 calc_button.pack(side="bottom")
-
-
-
-
-
 
 
 mainloop()
