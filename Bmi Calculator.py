@@ -24,9 +24,14 @@ lb_height.pack(side ="top")
 ent_height = Entry()
 ent_height.pack(side = "top")
 
-result = Label(text="",font=FONT)
-result.config(pady=10,padx=10)
-result.pack(side ="top")
+result_label = Label(text="",font=FONT)
+result_label.pack()
+#result_label(pady=10,padx=10)
+#result_label(side ="top")
+
+def clear_label():
+    result_label.config(text="")
+
 
 
 def calculate():
@@ -36,27 +41,31 @@ def calculate():
         result = weight / ((height * 0.01) * (height * 0.01))
 
         if result < 18.5:
-            result_label = Label(text="Vücut İndeksiniz 'Zayıf'", font=FONT)
+            result_label = Label(text=f"Your Bmi is {result} Underweight ", font=FONT)
             result_label.pack(side="top")
         elif result < 24.9:
-            result_label = Label(text="Vücut İndeksiniz 'Normal Kilolu'", font=FONT)
+            result_label = Label(text=f"Your Bmi is {result} Normal weight", font=FONT)
             result_label.pack(side="top")
         elif result < 29.9:
-            result_label = Label(text="Vücut İndeksiniz 'Fazla Kilolu'", font=FONT)
+            result_label = Label(text=f"Your Bmi is {result} Overweight", font=FONT)
             result_label.pack(side="top")
 
         elif result > 30:
-            result_label = Label(text="Vücut İndeksiniz 'Obez'", font=FONT)
+            result_label = Label(text=f"Your Bmi is {result} Obesity", font=FONT)
             result_label.pack(side="top")
 
         else:
-            result_label = Label(text="Girdiğiniz değerleri kontrol ediniz!", font=FONT)
+            result_label = Label(text="Your weight or height is not valid !", font=FONT)
             result_label.pack(side="top")
     except ValueError :
-        result_label = Label(text="Girdiğiniz değerleri kontrol ediniz!", font=FONT)
+        result_label = Label(text="Your weight or height is not valid !", font=FONT)
         result_label.pack(side="top")
 
-calc_button = Button(text="Calculate",font=FONT,command=calculate)
+
+calc_button = Button(text="Calculate",font=FONT)
+calc_button.config(command=clear_label)
+calc_button.config(command=calculate)
+
 calc_button.config(height=1,width=10)
 calc_button.pack(side="bottom")
 
